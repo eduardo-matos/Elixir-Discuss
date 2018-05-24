@@ -1,1 +1,8 @@
 /* This file is for your main application css. */
+
+.help-block {
+    text-transform: capitalize;
+    color: red;
+}
+
+span.badge { color: #fff; }
