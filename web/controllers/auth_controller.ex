@@ -11,8 +11,9 @@ defmodule Discuss.AuthController do
     }
 
     case get_or_create_user(user_params) do
-      {:ok, _user} ->
+      {:ok, user} ->
         conn
+        |> put_session(:user_id, user.id)
         |> put_flash(:info, "User successfully found!")
         |> redirect(to: topic_path(conn, :index))
       {:error, reason} ->
@@ -20,6 +21,12 @@ defmodule Discuss.AuthController do
         |> put_flash(:error, "Some error occurred: #{reason}")
         |> redirect(to: topic_path(conn, :index))
     end
+  end
+
+  def logout(conn, _params) do
+    conn
+    |> configure_session(drop: true)
+    |> redirect(to: topic_path(conn, :index))
   end
 
   defp get_or_create_user(user_params) do

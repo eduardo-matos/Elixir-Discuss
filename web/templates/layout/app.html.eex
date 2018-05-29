@@ -19,7 +19,11 @@
         <a href="/" class="brand-logo">Discussions</a>
 
         <div class="right">
-          <%= link "Login with Github", to: auth_path(@conn, :request, "github") %>
+          <%= if @user do %>
+            <%= link "Logout", to: auth_path(@conn, :logout) %>
+          <% else %>
+            <%= link "Login with Github", to: auth_path(@conn, :request, "github") %>
+          <% end %>
         </div>
       </div>
     </nav>
