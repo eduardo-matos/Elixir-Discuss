@@ -17,6 +17,10 @@
     <nav class="light-blue">
       <div class="nav-wrapper container">
         <a href="/" class="brand-logo">Discussions</a>
+
+        <div class="right">
+          <%= link "Login with Github", to: auth_path(@conn, :request, "github") %>
+        </div>
       </div>
     </nav>
 
