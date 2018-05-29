@@ -5,6 +5,8 @@ defmodule Discuss.User do
     field :email, :string
     field :code, :string
     field :provider, :string
+
+    has_many :topics, Discuss.Topic
   end
 
   def changeset(record, params \\ %{}) do
